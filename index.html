@@ -208,6 +208,12 @@ header h2 { font-family:'Cinzel',serif; font-size:clamp(.65rem,1.8vw,.9rem); fon
 
 /* ── ANNOUNCEMENT CARDS ── */
 .cards-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:14px; padding:18px; }
+.days-container { display:flex; flex-direction:column; gap:16px; padding:18px; }
+.day-group { border-radius:10px; }
+.day-group.today { border:2px solid var(--gold); background:rgba(255,200,0,.04); padding:12px; }
+.day-group .cards-grid { padding:10px 0 0; }
+.league-date-hdr { font-family:'Cinzel',serif; font-size:.82rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--rain-light); padding:6px 4px 8px; border-bottom:2px solid var(--border); display:flex; align-items:center; gap:10px; }
+.league-date-hdr.today { color:var(--gold); border-bottom-color:var(--gold); }
 .ann-card { background:var(--bg-card); border:1px solid var(--border); border-radius:8px; overflow:hidden; display:flex; flex-direction:column; transition:transform .15s,box-shadow .15s; }
 .ann-card:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(0,0,0,.55); }
 .card-head { padding:9px 13px 8px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; gap:8px; }
@@ -237,16 +243,16 @@ header h2 { font-family:'Cinzel',serif; font-size:clamp(.65rem,1.8vw,.9rem); fon
 .league-banner-sub   { font-size:.85rem; color:var(--text-dim); margin-top:5px; font-style:italic; }
 
 /* ── CALENDAR VIEW ── */
-.cal-section { padding:0 0 40px; }
+.cal-section { padding:0; }
 .cal-tz-label { font-family:'Cinzel',serif; font-size:1rem; font-weight:700; letter-spacing:.16em; color:var(--text-main); padding:13px 20px 11px; background:var(--bg-card); border-bottom:1px solid var(--border); text-transform:uppercase; }
-.cal-wrap  { overflow-x:auto; padding:16px; }
+.cal-wrap  { padding:0; }
 .cal-table { border-collapse:collapse; font-size:.82rem; }
 .cal-date-hdr { font-family:'Cinzel',serif; font-size:.7rem; font-weight:700; letter-spacing:.1em; text-align:center; padding:10px 12px 8px; background:var(--bg-panel); color:var(--text-dim); border:1px solid var(--border); white-space:nowrap; text-transform:uppercase; min-width:250px; }
 .cal-date-hdr.today { background:rgba(58,154,189,.14); color:var(--rain-light); border-color:var(--rain-dim); box-shadow:inset 0 0 0 2px var(--rain-dim); }
 .cal-date-hdr .today-badge { display:block; font-size:.55rem; color:var(--rain); letter-spacing:.2em; margin-top:3px; }
 .cal-cell { vertical-align:top; padding:6px; border:1px solid var(--border); background:var(--bg-card); width:250px; min-width:250px; }
 .cal-cell.today { background:rgba(58,154,189,.05); border-color:var(--rain-dim); }
-.cal-tourn { border-radius:6px; padding:8px 10px; margin-bottom:6px; border-left:3px solid; display:flex; flex-direction:column; gap:3px; }
+.cal-tourn { border-radius:8px; padding:14px 16px; border-left:4px solid; display:flex; flex-direction:column; gap:5px; }
 .cal-tourn:last-child { margin-bottom:0; }
 .cal-time   { font-family:'Cinzel',serif; font-size:.64rem; font-weight:700; color:var(--text-dim); letter-spacing:.07em; }
 .cal-tname  { font-size:.82rem; line-height:1.3; }
@@ -354,7 +360,7 @@ html[data-theme="lightsteel"] .li-link:hover { border-color:var(--rain); }
 <header>
   <div class="rain-bar"></div>
   <h1>☔ PRIVATE LEAGUE SCHEDULES 🌧️</h1>
-  <h2>19 Leagues &nbsp;·&nbsp; Multiple Time Zones &nbsp;·&nbsp; Live Updates</h2>
+  <h2>7 Leagues &nbsp;·&nbsp; Multiple Time Zones &nbsp;·&nbsp; Live Updates</h2>
   <div class="header-ornament">♠ ♥ ♦ ♣ ☔ ♣ ♦ ♥ ♠</div>
   <div class="hdr-row">
     <div class="live-badge"><span class="live-dot"></span>LIVE DATA</div>
@@ -707,10 +713,10 @@ html[data-theme="lightsteel"] .li-link:hover { border-color:var(--rain); }
   <div class="cal-tz-label">🇩🇪 Berliner Zeit &nbsp;(Europe/Berlin)</div>
   <div class="filter-bar">
     <span class="filter-label">STATUS ▶</span>
-    <button class="filter-pill active"   id="cf-deutschland-all" onclick="setCalFilter('deutschland','all')">ALL</button>
-    <button class="filter-pill pill-run" id="cf-deutschland-run" onclick="setCalFilter('deutschland','running')">🟢 RUNNING</button>
-    <button class="filter-pill pill-reg" id="cf-deutschland-reg" onclick="setCalFilter('deutschland','registering')">🔵 REGISTERING</button>
-    <button class="filter-pill pill-ann" id="cf-deutschland-ann" onclick="setCalFilter('deutschland','announced')">🟡 UPCOMING</button>
+    <button class="filter-pill active"   id="cf-deutschland-all" onclick="setCalFilter('deutschland','all')">ALLE</button>
+    <button class="filter-pill pill-run" id="cf-deutschland-run" onclick="setCalFilter('deutschland','running')">🟢 LÄUFT</button>
+    <button class="filter-pill pill-reg" id="cf-deutschland-reg" onclick="setCalFilter('deutschland','registering')">🔵 REGISTRIERUNG</button>
+    <button class="filter-pill pill-ann" id="cf-deutschland-ann" onclick="setCalFilter('deutschland','announced')">🟡 BEVORSTEHEND</button>
     <span class="result-count" id="cf-deutschland-count"></span>
   </div>
   <div class="cal-section"><div class="cal-wrap" id="cal-deutschland"></div></div>
@@ -719,10 +725,10 @@ html[data-theme="lightsteel"] .li-link:hover { border-color:var(--rain); }
   <div class="cal-tz-label">🌵 Hora CDT &nbsp;(America/Chicago)</div>
   <div class="filter-bar">
     <span class="filter-label">STATUS ▶</span>
-    <button class="filter-pill active"   id="cf-espanol-all" onclick="setCalFilter('espanol','all')">ALL</button>
-    <button class="filter-pill pill-run" id="cf-espanol-run" onclick="setCalFilter('espanol','running')">🟢 RUNNING</button>
-    <button class="filter-pill pill-reg" id="cf-espanol-reg" onclick="setCalFilter('espanol','registering')">🔵 REGISTERING</button>
-    <button class="filter-pill pill-ann" id="cf-espanol-ann" onclick="setCalFilter('espanol','announced')">🟡 UPCOMING</button>
+    <button class="filter-pill active"   id="cf-espanol-all" onclick="setCalFilter('espanol','all')">TODO</button>
+    <button class="filter-pill pill-run" id="cf-espanol-run" onclick="setCalFilter('espanol','running')">🟢 EN CURSO</button>
+    <button class="filter-pill pill-reg" id="cf-espanol-reg" onclick="setCalFilter('espanol','registering')">🔵 REGISTRO</button>
+    <button class="filter-pill pill-ann" id="cf-espanol-ann" onclick="setCalFilter('espanol','announced')">🟡 PRÓXIMOS</button>
     <span class="result-count" id="cf-espanol-count"></span>
   </div>
   <div class="cal-section"><div class="cal-wrap" id="cal-espanol"></div></div>
@@ -731,10 +737,10 @@ html[data-theme="lightsteel"] .li-link:hover { border-color:var(--rain); }
   <div class="cal-tz-label">⚜ Heure de l'Est &nbsp;(America/New_York)</div>
   <div class="filter-bar">
     <span class="filter-label">STATUS ▶</span>
-    <button class="filter-pill active"   id="cf-francais-all" onclick="setCalFilter('francais','all')">ALL</button>
-    <button class="filter-pill pill-run" id="cf-francais-run" onclick="setCalFilter('francais','running')">🟢 RUNNING</button>
-    <button class="filter-pill pill-reg" id="cf-francais-reg" onclick="setCalFilter('francais','registering')">🔵 REGISTERING</button>
-    <button class="filter-pill pill-ann" id="cf-francais-ann" onclick="setCalFilter('francais','announced')">🟡 UPCOMING</button>
+    <button class="filter-pill active"   id="cf-francais-all" onclick="setCalFilter('francais','all')">TOUS</button>
+    <button class="filter-pill pill-run" id="cf-francais-run" onclick="setCalFilter('francais','running')">🟢 EN COURS</button>
+    <button class="filter-pill pill-reg" id="cf-francais-reg" onclick="setCalFilter('francais','registering')">🔵 INSCRIPTION</button>
+    <button class="filter-pill pill-ann" id="cf-francais-ann" onclick="setCalFilter('francais','announced')">🟡 À VENIR</button>
     <span class="result-count" id="cf-francais-count"></span>
   </div>
   <div class="cal-section"><div class="cal-wrap" id="cal-francais"></div></div>
@@ -757,7 +763,7 @@ html[data-theme="lightsteel"] .li-link:hover { border-color:var(--rain); }
 <!-- ══ NW LEAGUE ════════════════════════════════════════════ -->
 <div id="section-nw" style="display:none">
   <div class="league-banner">
-    <div class="league-banner-title" style="color:#c8d8e8">⚔ NORDIC WARRIORS</div>
+    <div class="league-banner-title" style="color:#00d4f0">⚔ NORDIC WARRIORS</div>
     <div class="league-banner-sub">League ID 67 &nbsp;·&nbsp; Upcoming Tournaments</div>
     <a class="card-lobby-link" href="https://www.casino.org/replaypoker/leagues/67" target="_blank" style="display:inline-block;margin-top:10px">VIEW LOBBY ↗</a>
   </div>
@@ -790,7 +796,7 @@ html[data-theme="lightsteel"] .li-link:hover { border-color:var(--rain); }
 <!-- ══ WWWH LEAGUE ══════════════════════════════════════════ -->
 <div id="section-wwwh" style="display:none">
   <div class="league-banner">
-    <div class="league-banner-title" style="color:#d4ac7a">🐴 WILDHORSES LEAGUE</div>
+    <div class="league-banner-title" style="color:#ff9a00">🐴 WILDHORSES LEAGUE</div>
     <div class="league-banner-sub">League ID 58 &nbsp;·&nbsp; Upcoming Tournaments</div>
     <a class="card-lobby-link" href="https://www.casino.org/replaypoker/leagues/58" target="_blank" style="display:inline-block;margin-top:10px">VIEW LOBBY ↗</a>
   </div>
@@ -847,25 +853,42 @@ const REFRESH_MS = 30 * 60 * 1000; // 30 minutes
 
 // ── League colors (dark-theme) ────────────────────────────────
 const LC = {
-  "Leagues Invitational":                        { bg:'rgba(201,168,76,.12)',  bd:'#8a6c2a', tx:'#e4c878' },
-  "Nordic Warriors":                             { bg:'rgba(168,184,200,.12)', bd:'#506070', tx:'#c8d8e8' },
-  "Wildhorses":                                  { bg:'rgba(180,140,90,.12)',  bd:'#7a5a30', tx:'#d4ac7a' },
-  "Early Bird League":                           { bg:'rgba(58,154,189,.15)',  bd:'#2a6888', tx:'#6ab8d4' },
-  "Orion's Belt Team Poker 1 - Alnitak":        { bg:'rgba(200,80,80,.12)',   bd:'#882020', tx:'#e08080' },
-  "Orion's Belt Team Poker 2 - Alnilam":        { bg:'rgba(200,80,80,.12)',   bd:'#882020', tx:'#e08080' },
-  "Orion's Belt Team Poker 3 - Mintaka":        { bg:'rgba(200,80,80,.12)',   bd:'#882020', tx:'#e08080' },
-  "Default":                                     { bg:'rgba(60,80,100,.12)',   bd:'#303848', tx:'#8090a0' }
+  "Leagues Invitational":                        { bg:'rgba(255,200,0,.18)',   bd:'#c89000', tx:'#ffd700' },
+  "Nordic Warriors":                             { bg:'rgba(0,200,230,.18)',   bd:'#0099b8', tx:'#00d4f0' },
+  "Weedwoman420's WILDHORSES League":            { bg:'rgba(255,120,0,.18)',   bd:'#cc6000', tx:'#ff9a00' },
+  "Early Bird League":                           { bg:'rgba(50,210,80,.18)',   bd:'#1a8a30', tx:'#30dd55' },
+  "Orion's Belt Team Poker 1 - Alnitak":        { bg:'rgba(255,50,140,.18)',  bd:'#cc0077', tx:'#ff44aa' },
+  "Orion's Belt Team Poker 2 - Alnilam":        { bg:'rgba(255,50,140,.18)',  bd:'#cc0077', tx:'#ff44aa' },
+  "Orion's Belt Team Poker 3 - Mintaka":        { bg:'rgba(255,50,140,.18)',  bd:'#cc0077', tx:'#ff44aa' },
+  "Default":                                     { bg:'rgba(80,100,130,.15)',  bd:'#445566', tx:'#99aabb' }
 };
 function lc(name) { return LC[name] || LC['Default']; }
 
 // ── Translations ──────────────────────────────────────────────
+// .words — used by trName() for tournament name replacement and trStatus() for status badges
+// top-level keys — used by trUI() for hardcoded UI labels
 const TR = {
-  de: { Announced:'Angekündigt', Registering:'Registrierung', Finished:'Fertig',    Running:'Laufend',   Cancelled:'Abgebrochen',
-        Tournament:'Turnier',    Game:'Spiel',  Morning:'Morgen', Night:'Nacht', Qualifier:'Qualifikation', Pool:'Pool' },
-  fr: { Announced:'Annoncé',    Registering:'Inscription',    Finished:'Terminé',   Running:'En Cours',  Cancelled:'Annulé',
-        Tournament:'Tournoi',   Game:'Jeu',    Morning:'Matin',  Night:'Nuit',  Qualifier:'Qualificatif',  Pool:'Cagnotte' },
-  es: { Announced:'Anunciado',  Registering:'Registro',        Finished:'Terminado', Running:'En Curso',  Cancelled:'Cancelado',
-        Tournament:'Torneo',    Game:'Juego',  Morning:'Mañana', Night:'Noche', Qualifier:'Calificativo',  Pool:'Pozo' }
+  de: {
+    words: { Announced:'Angekündigt', Registering:'Registrierung', Finished:'Fertig',    Running:'Laufend',   Cancelled:'Abgebrochen',
+             Tournament:'Turnier',    Game:'Spiel',  Morning:'Morgen', Night:'Nacht', Qualifier:'Qualifikation', Pool:'Pool',
+             Monday:'Montag', Tuesday:'Dienstag', Wednesday:'Mittwoch', Thursday:'Donnerstag', Friday:'Freitag', Saturday:'Samstag', Sunday:'Sonntag',
+             Weekly:'Wöchentlich', Daily:'Täglich' },
+    BuyIn:'Einsatz', LeagueLobby:'Liga-Lobby', LinkToGame:'Zum Spiel', LaterLabel:'15 Min. später:', Today:'HEUTE'
+  },
+  fr: {
+    words: { Announced:'Annoncé',    Registering:'Inscription',    Finished:'Terminé',   Running:'En Cours',  Cancelled:'Annulé',
+             Tournament:'Tournoi',   Game:'Jeu',    Morning:'Matin',  Night:'Nuit',  Qualifier:'Qualificatif',  Pool:'Cagnotte',
+             Monday:'Lundi', Tuesday:'Mardi', Wednesday:'Mercredi', Thursday:'Jeudi', Friday:'Vendredi', Saturday:'Samedi', Sunday:'Dimanche',
+             Weekly:'Hebdomadaire', Daily:'Quotidien' },
+    BuyIn:'Mise', LeagueLobby:'Lobby de Ligue', LinkToGame:'Rejoindre', LaterLabel:'15 min plus tard :', Today:"AUJOURD'HUI"
+  },
+  es: {
+    words: { Announced:'Anunciado',  Registering:'Registro',        Finished:'Terminado', Running:'En Curso',  Cancelled:'Cancelado',
+             Tournament:'Torneo',    Game:'Juego',  Morning:'Mañana', Night:'Noche', Qualifier:'Calificativo',  Pool:'Pozo',
+             Monday:'Lunes', Tuesday:'Martes', Wednesday:'Miércoles', Thursday:'Jueves', Friday:'Viernes', Saturday:'Sábado', Sunday:'Domingo',
+             Weekly:'Semanal', Daily:'Diario' },
+    BuyIn:'Entrada', LeagueLobby:'Lobby de Liga', LinkToGame:'Unirse', LaterLabel:'15 min después:', Today:'HOY'
+  }
 };
 
 // ── Tab configs (timezone, language, locale) ──────────────────
@@ -901,17 +924,30 @@ function stClass(status) {
 
 function trStatus(status, lang) {
   if (!lang||lang==='en') return status;
-  return (TR[lang]||{})[status] || status;
+  return ((TR[lang]||{}).words||{})[status] || status;
 }
 
 function trName(name, lang) {
   if (!lang||lang==='en') return name;
-  const map = TR[lang]; if (!map) return name;
+  const map = (TR[lang]||{}).words; if (!map) return name;
   let r = name;
   Object.keys(map).forEach(function(k) {
     r = r.replace(new RegExp('\\b'+k+'\\b','gi'), map[k]);
   });
   return r;
+}
+
+function trUI(key, lang, fallback) {
+  if (!lang||lang==='en') return fallback;
+  return (TR[lang]||{})[key] || fallback;
+}
+
+function trCount(n, lang) {
+  if (!lang||lang==='en') return n+' tournament'+(n!==1?'s':'');
+  if (lang==='de') return n+(n===1?' Turnier':' Turniere');
+  if (lang==='fr') return n+(n===1?' tournoi':' tournois');
+  if (lang==='es') return n+(n===1?' torneo':' torneos');
+  return n+' tournament'+(n!==1?'s':'');
 }
 
 function fmtTime(iso, tz, loc) {
@@ -963,7 +999,7 @@ function prizeStr(t) {
 function prizeStrTr(t, lang) {
   const p = t.rawPrize>0?t.rawPrize:t.chips;
   if (!p||p<=0) return '';
-  const label = (lang&&TR[lang]&&TR[lang].Pool)||'Pool';
+  const label = (lang&&TR[lang]&&TR[lang].words&&TR[lang].words.Pool)||'Pool';
   let s=label+': '+p.toLocaleString();
   if (t.addOn>0) s+=' (+'+t.addOn.toLocaleString()+')';
   return s;
@@ -1340,7 +1376,34 @@ function renderLeague(id, containerId, tab) {
     el.innerHTML = '<div class="empty-state"><div class="empty-icon">🌧️</div><div class="empty-text">NO TOURNAMENTS MATCH THIS FILTER</div></div>';
     return;
   }
-  el.innerHTML = filtered.map(function(t){ return buildCard(t,'JOIN NOW',t.link,'card-join-link'); }).join('');
+
+  // Group by date in New York time and render with day headers
+  const tz = 'America/New_York';
+  const todayDk = dateKey(new Date().toISOString(), tz);
+  const byDate = {}, dateOrder = [];
+  filtered.forEach(function(t) {
+    const dk = dateKey(t.start, tz);
+    if (!dk) return;
+    if (!byDate[dk]) { byDate[dk] = []; dateOrder.push(dk); }
+    byDate[dk].push(t);
+  });
+  dateOrder.sort();
+
+  let h = '<div class="days-container">';
+  dateOrder.forEach(function(dk) {
+    const isToday = dk === todayDk;
+    const label = fmtDateHdr(dk, 'en-US');
+    h += '<div class="day-group'+(isToday?' today':'')+'"><div class="league-date-hdr'+(isToday?' today':'')+'">'+esc(label)+(isToday?' <span class="today-badge">▼ TODAY ▼</span>':'')+'</div><div class="cards-grid">';
+    byDate[dk].forEach(function(t) {
+      h += buildCard(t, 'JOIN NOW', t.link, 'card-join-link');
+    });
+    h += '</div></div>';
+  });
+  h += '</div>';
+  el.innerHTML = h;
+
+  const todayGroup = el.querySelector('.day-group.today');
+  if (todayGroup) setTimeout(function(){ todayGroup.scrollIntoView({behavior:'smooth',block:'start'}); }, 80);
 }
 
 // ── Render: Calendar ─────────────────────────────────────────
@@ -1363,7 +1426,7 @@ function renderCalendar(tabKey, containerId) {
 
   // Update count badge
   const countEl = document.getElementById('cf-'+tabKey+'-count');
-  if (countEl) countEl.textContent = calSource.length + ' tournament'+(calSource.length!==1?'s':'');
+  if (countEl) countEl.textContent = trCount(calSource.length, lang);
 
   // Group tournaments by date key in this TZ
   const map = {};
@@ -1380,20 +1443,14 @@ function renderCalendar(tabKey, containerId) {
     return;
   }
 
-  let h = '<table class="cal-table"><thead><tr>';
+  let h = '<div class="days-container">';
+
   dates.forEach(function(dk){
     const isTd = dk===today;
     const lbl  = fmtDateHdr(dk, loc);
-    h += '<th class="cal-date-hdr'+(isTd?' today':'')+'">'+esc(lbl)+(isTd?'<span class="today-badge">▼ TODAY ▼</span>':'')+'</th>';
-  });
-  h += '</tr></thead><tbody><tr>';
-
-  dates.forEach(function(dk){
-    const isTd = dk===today;
-    h += '<td class="cal-cell'+(isTd?' today':'')+'">';
+    h += '<div class="day-group'+(isTd?' today':'')+'"><div class="league-date-hdr'+(isTd?' today':'')+'">'+esc(lbl)+(isTd?'<span class="today-badge">▼ '+trUI('Today',lang,'TODAY')+' ▼</span>':'')+'</div><div class="cards-grid">';
 
     // Group tournaments within this day by league + start time
-    // so simultaneous numbered games (FL2 Game 1/2/3 etc.) collapse into one block
     const groups = [];
     const groupIdx = {};
     (map[dk]||[]).forEach(function(t){
@@ -1461,20 +1518,20 @@ function renderCalendar(tabKey, containerId) {
         const bi     = buyInStr(t);
         const gType  = (t.game || '').trim();
         h += '<div class="cal-tname"><a href="'+esc(t.link)+'" target="_blank">'+esc(dName)+
-             '<span class="cal-link-label">↗ Link to Game</span></a></div>';
+             '<span class="cal-link-label">↗ '+trUI('LinkToGame',lang,'Link to Game')+'</span></a></div>';
         // Per-game game type only when they differ within the group
         if (!allSameGame && gType) {
           h += '<div class="cal-game-item">♠ '+esc(gType)+'</div>';
         }
-        // Per-game buy-in only when they differ within the group
-        if (!allSameBI) {
+        // Per-game buy-in only when they differ within the group (skip for finished — API returns no buy-in data)
+        if (!allSameBI && (bestStatus||'').toLowerCase() !== 'finished') {
           h += '<div class="cal-buyin-item">⬥ '+esc(bi)+'</div>';
         }
       });
 
-      // Shared buy-in shown once after all game links
-      if (allSameBI) {
-        h += '<div class="cal-buyin">Buy-in: '+esc(firstBI)+'</div>';
+      // Shared buy-in shown once after all game links (skip for finished — API returns no buy-in data)
+      if (allSameBI && (bestStatus||'').toLowerCase() !== 'finished') {
+        h += '<div class="cal-buyin">'+trUI('BuyIn',lang,'Buy-in')+': '+esc(firstBI)+'</div>';
       }
 
       h += '<span class="cal-tstatus '+stClass(bestStatus)+'">'+esc(dStatus)+'</span>';
@@ -1482,31 +1539,31 @@ function renderCalendar(tabKey, containerId) {
 
       // Bye Table items folded in (~15 min later, same league)
       if (g.byeItems && g.byeItems.length) {
-        h += '<div class="cal-game" style="margin-top:6px;opacity:.75">⏱ '+esc(g.byeTm)+' — 15 min later:</div>';
+        h += '<div class="cal-game" style="margin-top:6px;opacity:.75">⏱ '+esc(g.byeTm)+' — '+trUI('LaterLabel',lang,'15 min later:')+'</div>';
         g.byeItems.forEach(function(t){
           const dName = trName(t.name, lang);
           h += '<div class="cal-tname"><a href="'+esc(t.link)+'" target="_blank">'+esc(dName)+
-               '<span class="cal-link-label">↗ Link to Game</span></a></div>';
+               '<span class="cal-link-label">↗ '+trUI('LinkToGame',lang,'Link to Game')+'</span></a></div>';
         });
       }
 
       // One lobby link per group at the bottom
       if (g.lobbyLink) {
-        h += '<div class="cal-cell-lobby"><a href="'+esc(g.lobbyLink)+'" target="_blank">🏛 League Lobby</a></div>';
+        h += '<div class="cal-cell-lobby"><a href="'+esc(g.lobbyLink)+'" target="_blank">🏛 '+trUI('LeagueLobby',lang,'League Lobby')+'</a></div>';
       }
 
       h += '</div>';
     });
 
-    h += '</td>';
+    h += '</div></div>'; // close cards-grid and day-group
   });
 
-  h += '</tr></tbody></table>';
+  h += '</div>';
   el.innerHTML = h;
 
-  // Scroll today's column into view
-  const todayHdr = el.querySelector('.cal-date-hdr.today');
-  if (todayHdr) setTimeout(function(){ todayHdr.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'}); }, 80);
+  // Scroll today's group into view
+  const todayGroup = el.querySelector('.day-group.today');
+  if (todayGroup) setTimeout(function(){ todayGroup.scrollIntoView({behavior:'smooth',block:'start'}); }, 80);
 }
 
 // ── Render: Links ─────────────────────────────────────────────
