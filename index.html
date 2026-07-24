@@ -208,12 +208,12 @@ header h2 { font-family:'Cinzel',serif; font-size:clamp(.65rem,1.8vw,.9rem); fon
 
 /* ── ANNOUNCEMENT CARDS ── */
 .cards-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:14px; padding:18px; }
-.days-container { display:flex; flex-direction:column; gap:16px; padding:18px; }
+.days-container { display:flex; flex-direction:column; gap:28px; padding:24px; }
 .day-group { border-radius:10px; }
-.day-group.today { border:2px solid var(--gold); background:rgba(255,200,0,.04); padding:12px; }
+.day-group.today { outline:2px solid #ffd700; outline-offset:10px; background:rgba(255,215,0,.04); border-radius:10px; }
 .day-group .cards-grid { padding:10px 0 0; }
 .league-date-hdr { font-family:'Cinzel',serif; font-size:.82rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--rain-light); padding:6px 4px 8px; border-bottom:2px solid var(--border); display:flex; align-items:center; gap:10px; }
-.league-date-hdr.today { color:var(--gold); border-bottom-color:var(--gold); }
+.league-date-hdr.today { color:#ffd700; border-bottom-color:#ffd700; }
 .ann-card { background:var(--bg-card); border:1px solid var(--border); border-radius:8px; overflow:hidden; display:flex; flex-direction:column; transition:transform .15s,box-shadow .15s; }
 .ann-card:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(0,0,0,.55); }
 .card-head { padding:9px 13px 8px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; gap:8px; }
@@ -249,7 +249,7 @@ header h2 { font-family:'Cinzel',serif; font-size:clamp(.65rem,1.8vw,.9rem); fon
 .cal-table { border-collapse:collapse; font-size:.82rem; }
 .cal-date-hdr { font-family:'Cinzel',serif; font-size:.7rem; font-weight:700; letter-spacing:.1em; text-align:center; padding:10px 12px 8px; background:var(--bg-panel); color:var(--text-dim); border:1px solid var(--border); white-space:nowrap; text-transform:uppercase; min-width:250px; }
 .cal-date-hdr.today { background:rgba(58,154,189,.14); color:var(--rain-light); border-color:var(--rain-dim); box-shadow:inset 0 0 0 2px var(--rain-dim); }
-.cal-date-hdr .today-badge { display:block; font-size:.55rem; color:var(--rain); letter-spacing:.2em; margin-top:3px; }
+.today-badge { font-size:.65rem; color:#ffd700; letter-spacing:.2em; font-weight:700; }
 .cal-cell { vertical-align:top; padding:6px; border:1px solid var(--border); background:var(--bg-card); width:250px; min-width:250px; }
 .cal-cell.today { background:rgba(58,154,189,.05); border-color:var(--rain-dim); }
 .cal-tourn { border-radius:8px; padding:14px 16px; border-left:4px solid; display:flex; flex-direction:column; gap:5px; }
